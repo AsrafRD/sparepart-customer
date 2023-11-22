@@ -1,6 +1,6 @@
 "use client";
 
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
+import { MagnifyingGlass } from '@phosphor-icons/react';
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
 
@@ -23,12 +23,12 @@ const InputSearch = () => {
     <div className="relative px-2">
       <input
         placeholder="search product....."
-        className="w-full h-9 p-4 rounded-xl border-2 focus:border-none"
+        className="w-full py-1 p-4 rounded-2xl border-2"
         ref={searchRef}
         onKeyDown={handleSearch}
       />
-      <button className="absolute top-2 end-4" onClick={handleSearch}>
-        <MagnifyingGlassIcon className='h-5 w-5' />
+      <button className="absolute top-2 end-5" onClick={handleSearch}>
+        <MagnifyingGlass className='h-5 w-5' />
       </button>
     </div>
   );

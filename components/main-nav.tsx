@@ -21,7 +21,7 @@ const MainNav: React.FC<MainNavProps> = ({ data }) => {
 
   return (
     <nav
-      className="grid grid-cols-3"
+      className="grid grid-cols-3 md:grid-cols-6"
     >
       {routes.map((route) => (
         <Link

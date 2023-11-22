@@ -1,87 +1,25 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/aspect-ratio'),
-    ],
-  }
-  ```
-*/
 "use client";
 
 import { Fragment, useState } from "react";
-import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
-import {
-  Bars3Icon,
-  MagnifyingGlassIcon,
-  ShoppingBagIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
+import { Dialog, Transition } from "@headlessui/react";
+import { Bars3Icon } from "@heroicons/react/24/outline";
 import NavbarActions from "@/components/navbar-actions";
 import InputSearch from "./input-search";
 import Link from "next/link";
+import {
+  FacebookLogo,
+  InstagramLogo,
+  TiktokLogo,
+  WhatsappLogo,
+  X,
+} from "@phosphor-icons/react";
 
 const navigation = {
-  categories: [
-    {
-      id: "women",
-      name: "Women",
-      sections: [
-        {
-          id: "clothing",
-          name: "Clothing",
-          items: [
-            { name: "Tops", href: "#" },
-            { name: "Dresses", href: "#" },
-            { name: "Pants", href: "#" },
-            { name: "Denim", href: "#" },
-            { name: "Sweaters", href: "#" },
-            { name: "T-Shirts", href: "#" },
-            { name: "Jackets", href: "#" },
-            { name: "Activewear", href: "#" },
-            { name: "Browse All", href: "#" },
-          ],
-        },
-        {
-          id: "accessories",
-          name: "Accessories",
-          items: [
-            { name: "Watches", href: "#" },
-            { name: "Wallets", href: "#" },
-            { name: "Bags", href: "#" },
-            { name: "Sunglasses", href: "#" },
-            { name: "Hats", href: "#" },
-            { name: "Belts", href: "#" },
-          ],
-        },
-        {
-          id: "brands",
-          name: "Brands",
-          items: [
-            { name: "Full Nelson", href: "#" },
-            { name: "My Way", href: "#" },
-            { name: "Re-Arranged", href: "#" },
-            { name: "Counterfeit", href: "#" },
-            { name: "Significant Other", href: "#" },
-          ],
-        },
-      ],
-    },
-  ],
   pages: [
     { name: "Company", href: "#" },
     { name: "Stores", href: "#" },
   ],
 };
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -90,7 +28,7 @@ export default function Navbar() {
     <div className="bg-white">
       {/* Mobile menu */}
       <Transition.Root show={open} as={Fragment}>
-        <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
+        <Dialog as="div" className="relative z-40 " onClose={setOpen}>
           <Transition.Child
             as={Fragment}
             enter="transition-opacity ease-linear duration-300"
@@ -113,7 +51,7 @@ export default function Navbar() {
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <Dialog.Panel className="relative flex w-60 h-70 flex-col overflow-y-auto bg-white pb-12 mt-10 shadow-xl">
+              <Dialog.Panel className="relative flex w-60 flex-col bg-white mt-10 shadow-xl">
                 <div className="flex justify-between items-center pb-4 pt-5 mr-5">
                   <Link href="/" className="ml-4 flex lg:ml-0 gap-x-2">
                     <p className="font-bold text-xl">Rozic Sparepart</p>
@@ -125,22 +63,32 @@ export default function Navbar() {
                   >
                     <span className="absolute -inset-0.5" />
                     <span className="sr-only">Close menu</span>
-                    <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                    <X size={32} aria-hidden="true" />
                   </button>
                 </div>
 
-                {/* Links */}
-                {/* <Link href="/" className="ml-4 flex lg:ml-0 gap-x-2">
-                  <p className="font-bold text-xl">Rozic Sparepart</p>
-                </Link> */}
-
-                <div className="space-y-4 border-t border-gray-200 px-4 py-4">
-                  <Link href="/" className="flex lg:ml-0 gap-x-2">
-                    <p className="-m-2 block p-2 font-medium text-gray-900">
-                      Dashboard
-                    </p>
+                <div className="space-y-3 border-t border-gray-200 px-4 py-4">
+                  <Link href="/" className="-m-2 p-2 flex lg:ml-0">
+                    <p className="font-medium text-gray-900">Dashboard</p>
                   </Link>
-                  {navigation.pages.map((page) => (
+
+                  <div className="flex flex-col m-4 space-y-2">
+                    <Link href="/orders/check" className="font-medium text-gray-900">
+                        Cek pesanan saya
+                    </Link>
+                  </div>
+                  <div className="-m-2 px-2 lg:ml-0">
+                    <Link href="/about">
+                      <p className="font-medium text-gray-900">Tentang Kami</p>
+                    </Link>
+                  </div>
+                  <div className="-m-2 px-2 flex lg:ml-0">
+                    <Link href="/help">
+                      <p className="font-medium text-gray-900">Bantuan</p>
+                    </Link>
+                  </div>
+
+                  {/* {navigation.pages.map((page) => (
                     <div key={page.name} className="flow-root">
                       <a
                         href={page.href}
@@ -149,25 +97,55 @@ export default function Navbar() {
                         {page.name}
                       </a>
                     </div>
-                  ))}
+                  ))} */}
                 </div>
 
-                <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-                  <div className="flow-root">
-                    <a
-                      href="#"
-                      className="-m-2 block p-2 font-medium text-gray-900"
-                    >
-                      Sign in
-                    </a>
-                  </div>
-                  <div className="flow-root">
-                    <a
-                      href="#"
-                      className="-m-2 block p-2 font-medium text-gray-900"
-                    >
-                      Create account
-                    </a>
+                <div className="fixed bottom-0 ml-">
+                  <div className="space-y-4 pt-14 mb-5 border-gray-200 px-4">
+                    <div className="flow-root">
+                      <div className="flex justify-center">
+                        <ul className="flex jusstify-center items-center text-gray-500 space-x-4 mt-4 mb-6">
+                          <li>
+                            <Link href="#">
+                              <FacebookLogo size={25} />
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="#">
+                              <WhatsappLogo size={25} />
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="#">
+                              <InstagramLogo size={25} />
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="#">
+                              <TiktokLogo size={25} />
+                            </Link>
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="flex flex-col justify-center items-center">
+                        <p className="-m-2 block p-2 font-medium text-gray-900">
+                          Alamat
+                        </p>
+                        <div className="text-sm">
+                          <ul className="flex flex-col justify-center items-center">
+                            <li>
+                              <p>Candirejo Rt.02 / Rw.03</p>
+                            </li>
+                            <li>
+                              <p>Ketangi, Kaliangkrik, Magelang</p>
+                            </li>
+                            <li>
+                              <p>Jawa Tengah, (56153) </p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </Dialog.Panel>
@@ -177,9 +155,38 @@ export default function Navbar() {
       </Transition.Root>
 
       <header className="relative bg-white">
-        <p className="flex h-10 items-center justify-center bg-orange-300 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
-          Get free delivery on orders over $100
-        </p>
+        <div className="bg-orange-300">
+          <div className="flex justify-between items-center px-4 h-10">
+            <div className="hidden md:block ml-4 mt-2">
+              <ul className="flex jusstify-center items-center text-gray-600 space-x-4 mt-4 mb-6">
+                <li>
+                  <Link href="#">
+                    <FacebookLogo size={20} className="hover:text-black"/>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#">
+                    <WhatsappLogo size={20} className="hover:text-black"/>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#">
+                    <InstagramLogo size={20} className="hover:text-black"/>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#">
+                    <TiktokLogo size={20} className="hover:text-black"/>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <p className="flex h-10 items-center justify-center px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
+              Gratis ongkir minimal pembelian Rp.100.000
+            </p>
+            <Link href="/help" className="hidden md:block text-gray-600 hover:text-black cursor-pointer">Bantuan</Link>
+          </div>
+        </div>
 
         <nav
           aria-label="Top"
@@ -197,35 +204,31 @@ export default function Navbar() {
                 <Bars3Icon className="h-6 w-6" aria-hidden="true" />
               </button>
 
-              {/* Logo */}
-              {/* <div className="ml-4 flex lg:ml-0">
-                <a href="#">
-                  <span className="sr-only">Your Company</span>
-                  <img
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                    alt=""
-                  />
-                </a>
-              </div> */}
-
               {/* Flyout menus */}
+              <div className="hidden md:block space-x-6">
+                <Link
+                  href="/"
+                  className="text-md font-medium text-gray-600 hover:text-black active:text-black"
+                >
+                  Dashboard
+                </Link>
+                <Link
+                  href="/about"
+                  className="text-md font-medium text-gray-600 hover:text-black active:text-black"
+                >
+                  Tentang Kami
+                </Link>
+              </div>
 
               <div className="ml-auto flex items-center">
-                <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  <a
-                    href="#"
-                    className="text-sm font-medium text-gray-700 hover:text-gray-800"
+                <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6 mr-4">
+                  {/* <span className="h-6 w-px bg-gray-400" aria-hidden="true" /> */}
+                  <Link
+                    href="/orders/check"
+                    className="text-md font-medium text-gray-600 hover:text-black active:text-black"
                   >
-                    Sign in
-                  </a>
-                  <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
-                  <a
-                    href="#"
-                    className="text-sm font-medium text-gray-700 hover:text-gray-800"
-                  >
-                    Create account
-                  </a>
+                    Cek pesanan saya
+                  </Link>
                 </div>
 
                 {/* Search */}

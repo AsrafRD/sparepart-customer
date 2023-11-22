@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image";
 import { toast } from "react-hot-toast";
 import { X } from "lucide-react";
@@ -6,6 +8,7 @@ import IconButton from "@/components/ui/icon-button";
 import Currency from "@/components/ui/currency";
 import useCart from "@/hooks/use-cart";
 import { Product } from "@/types";
+import { useState } from "react";
 
 
 interface CartItemProps {
@@ -16,9 +19,23 @@ const CartItem: React.FC<CartItemProps> = ({
   data
 }) => {
   const cart = useCart();
+  const [quantity, setQuantity] = useState(1);
 
   const onRemove = () => {
     cart.removeItem(data.id);
+  };
+
+  const onIncrease = () => {
+    setQuantity((prev) => prev + 1);
+    cart.addItem(data);
+  };
+
+  const onDecrease = () => {
+    if (quantity > 1) {
+      setQuantity((prev) => prev - 1);
+      // Kurangi jumlah item di keranjang
+      cart.removeItem(data.id);
+    }
   };
 
   return ( 
@@ -45,6 +62,16 @@ const CartItem: React.FC<CartItemProps> = ({
           <div className="mt-1 flex text-sm">
           </div>
           <Currency value={data.price} />
+          <div className="mt-1 flex text-sm">
+            {/* Tambah dan Kurang Tombol */}
+            <button onClick={onDecrease} className="px-2 py-1 bg-gray-200 rounded-md mr-2">
+              -
+            </button>
+            <span>{quantity}</span>
+            <button onClick={onIncrease} className="px-2 py-1 bg-gray-200 rounded-md ml-2">
+              +
+            </button>
+          </div>
         </div>
       </div>
     </li>

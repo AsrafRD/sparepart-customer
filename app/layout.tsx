@@ -26,9 +26,7 @@ export default function RootLayout({
         <ModalProvider />
         <Navbar />
         {children}
-        <div className="mt-8">
-          <Footer />
-        </div>
+        <Footer />
       </body>
     </html>
   );

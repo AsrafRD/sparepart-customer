@@ -1,9 +1,8 @@
-"use client"
 import React from "react";
 
-const HelpPage: React.FC = () => {
+const Page = () => {
   return (
-    <div >
+    <>
       <div className="p-4 md:px-8 md:py-6">
         <h1 className="text-2xl">Bantuan</h1>
 
@@ -42,12 +41,12 @@ const HelpPage: React.FC = () => {
             <h3>Cara Memasang Suku Cadang:</h3>
             <p>
               Untuk memasang suku cadang, ikuti langkah-langkah berikut:
-              <ol>
+              <ul>
                 <li>Bersihkan area pemasangan.</li>
                 <li>Ambil suku cadang dari kemasannya.</li>
                 <li>Pasang suku cadang sesuai petunjuk gambar.</li>
                 <li>Periksa kembali kekencangan pemasangan.</li>
-              </ol>
+              </ul>
             </p>
 
             <h3>Panduan Perawatan Kendaraan:</h3>
@@ -126,8 +125,8 @@ const HelpPage: React.FC = () => {
           </div>
         </section>
       </div>
-    </div>
+    </>
   );
 };
 
-export default HelpPage;
+export default Page;

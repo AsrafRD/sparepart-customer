@@ -20,7 +20,7 @@ const HomePage = async () => {
         {firstBillboard.map((billboard) => (
           <Billboard key={billboard.id} data={billboard} />
         ))}
-        <div className="mt-4">
+        <div className="mt-4 mb-5">
           <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8">
             <ProductList title="Featured Products" items={products} />
           </div>

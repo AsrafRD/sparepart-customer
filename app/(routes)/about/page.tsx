@@ -1,6 +1,6 @@
 import React from "react";
 
-const page = () => {
+const Page = () => {
   return (
     <>
       <div className="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8">
@@ -34,14 +34,14 @@ const page = () => {
             <div className="mt-4">
               <h2 className="text-xl font-semibold mb-2">Sejarah Singkat</h2>
               <p className="text-gray-700">
-                "Rozic Sparepart didirikan pada tahun 2020 dengan visi untuk
+                &quot;Rozic Sparepart didirikan pada tahun 2020 dengan visi untuk
                 menjadi pemimpin dalam menyediakan suku cadang otomotif terbaik.
                 Sejak awal, kami berkomitmen untuk memberikan produk berkualitas
                 tinggi dan pelayanan pelanggan terbaik. Dengan berbagai
                 pengalaman dan pengetahuan, kami telah tumbuh menjadi destinasi
                 utama bagi pemilik kendaraan yang mencari suku cadang andal dan
                 terpercaya. Kami bangga dapat berkontribusi pada mobilitas yang
-                aman dan efisien bagi pelanggan kami."
+                aman dan efisien bagi pelanggan kami.&quot;
               </p>
             </div>
           </div>
@@ -51,4 +51,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

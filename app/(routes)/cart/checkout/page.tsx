@@ -57,7 +57,7 @@ const CheckoutPage: React.FC = () => {
   };
 
   const validateFieldOrder = (): boolean => {
-    const fieldOrder = ["province", "city", "courier", "service"];
+    const fieldOrder = ["province", "city"];
 
     const currentIndex = fieldOrder.indexOf("province");
     for (let i = currentIndex + 1; i < fieldOrder.length; i++) {

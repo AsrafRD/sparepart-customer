@@ -35,19 +35,27 @@ const ProductCard: React.FC<ProductCard> = ({
   const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.stopPropagation();
 
-    cart.addItem(data);
+    cart.addItem(data, 1);
   };
 
-  const truncateText = (text: string, maxLength: number) => {
-    if (text.length > maxLength) {
+  // const truncateText = (text: string, maxLength: number) => {
+  //   if (text.length > maxLength) {
+  //     return text.substring(0, maxLength) + '...';
+  //   } else {
+  //     return text;
+  //   }
+  // };
+
+  const truncateText = (text: string | undefined | null, maxLength: number) => {
+    if (text && text.length > maxLength) {
       return text.substring(0, maxLength) + '...';
     } else {
-      return text;
+      return text || ''; // Return an empty string if text is null or undefined
     }
   };
   
   return ( 
-    <div onClick={handleClick} className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4">
+    <div onClick={handleClick} className="bg-white group cursor-pointer rounded-md border p-3 space-y-1 shadow-sm">
       {/* Image & actions */}
       <div className="aspect-square rounded-xl bg-gray-100 relative">
         <Image 
@@ -77,7 +85,7 @@ const ProductCard: React.FC<ProductCard> = ({
       {/* Price & Reiew */}
       <div className="flex flex-col">
         <Currency value={data?.price} />
-        <p className="text-sm text-gray-400">Stock 5</p>
+        <p className="text-sm text-orange-400">Stock {data.stock}</p>
       </div>
     </div>
   );

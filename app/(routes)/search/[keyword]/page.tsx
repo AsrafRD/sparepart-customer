@@ -1,38 +1,34 @@
-import getProducts from "@/actions/get-products";
 import ProductList from "@/components/product-list";
-import Container from "@/components/ui/container";
-import getProductByKeyword from "@/actions/get-searchProducts";
-
-export const revalidate = 0;
 
 interface ProductPageProps {
   params: {
     keyword: string;
-    productId: string;
-  };
+  },
 }
 
-const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
-  const product = await getProductByKeyword({ keyword: params.keyword });
-
-  if (!product) {
+const ProductPage: React.FC<ProductPageProps> = async ({ 
+  params
+ }) => {
+  // const products = await getProducts({ isFeatured: true });
+  const { keyword } = params;
+  const decodedKeyword = decodeURI(keyword);
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/products?q=${decodedKeyword}`
+  );  
+  
+  if (!response.ok) {
+    console.error('Failed to fetch search products');
+    // Handle error, maybe show a user-friendly message
     return null;
   }
-
-  const suggestedProducts = await getProducts({
-    categoryId: product[0]?.category?.id,
-  });
+  const searchProduct = await response.json();
 
   return (
-    <div className="bg-white">
-      <Container>
-        <div className="px-4 py-10 sm:px-6 lg:px-8">
-          <ProductList title="Related Items" items={product} />
-          <hr className="my-10" />
-          <ProductList title="Suggested Items" items={suggestedProducts} />
-        </div>
-      </Container>
-    </div>
+    <>
+      <div className="p-4">
+         <ProductList title="Produk yang dicari" items={searchProduct} />
+      </div>
+    </>
   );
 };
 

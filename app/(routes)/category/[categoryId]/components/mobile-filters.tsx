@@ -11,19 +11,19 @@ import { Color, ProductBrand, Size, VehicleBrand, VehicleType } from "@/types";
 import Filter from "./filter";
 
 interface MobileFiltersProps {
-  sizes: Size[],
-  colors: Color[],
+  // sizes: Size[],
+  // colors: Color[],
   vehicleBrands: VehicleBrand[],
   vehicleTypes: VehicleType[],
   productBrands: ProductBrand[],
 }
 
 const MobileFilters: React.FC<MobileFiltersProps> = ({
-  sizes,
+  // sizes,
   vehicleBrands,
   vehicleTypes,
   productBrands,
-  colors
+  // colors
 }) => {
   const [open, setOpen] = useState(false);
 
@@ -70,7 +70,7 @@ const MobileFilters: React.FC<MobileFiltersProps> = ({
                 name="Product Brands" 
                 data={productBrands}
               />
-              <Filter
+              {/* <Filter
                 valueKey="sizeId" 
                 name="Sizes" 
                 data={sizes}
@@ -79,7 +79,7 @@ const MobileFilters: React.FC<MobileFiltersProps> = ({
                 valueKey="colorId" 
                 name="Colors" 
                 data={colors}
-              />
+              /> */}
             </div>
           </Dialog.Panel>
         </div>

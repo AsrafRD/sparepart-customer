@@ -73,6 +73,11 @@ export default function Navbar() {
                   </Link>
 
                   <div className="flex flex-col m-4 space-y-2">
+                    <Link href="/systemPakar" className="font-medium text-gray-900">
+                        Periksa kendaraan anda
+                    </Link>
+                  </div>
+                  <div className="flex flex-col m-4 space-y-2">
                     <Link href="/orders/check" className="font-medium text-gray-900">
                         Cek pesanan saya
                     </Link>
@@ -223,6 +228,12 @@ export default function Navbar() {
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6 mr-4">
                   {/* <span className="h-6 w-px bg-gray-400" aria-hidden="true" /> */}
+                  <Link
+                    href="/systemPakar"
+                    className="text-md font-medium text-gray-600 hover:text-black active:text-black"
+                  >
+                    Periksa kendaraan saya
+                  </Link>
                   <Link
                     href="/orders/check"
                     className="text-md font-medium text-gray-600 hover:text-black active:text-black"

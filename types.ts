@@ -3,6 +3,8 @@ export interface Product {
   category: Category;
   name: string;
   price: string;
+  stock: string;
+  weight: string;
   isFeatured: boolean;
   size: Size;
   color: Color;
@@ -10,6 +12,8 @@ export interface Product {
   vehicleType: VehicleType;
   productBrand: ProductBrand;
   images: Image[];
+  quantity?:  number;
+  
 }
 
 export interface Image {
@@ -65,4 +69,25 @@ export interface Order {
   Email: String;
   createdAt: Date;
   updatedAt: Date;
+}
+
+export interface orderItem {
+  id:       String;
+  orderId:   String;
+  order:     Order[];   
+  productId: String;
+  product:   Product[]; 
+  quantity?:  number;
+}
+
+export interface Indication {
+  id: string;
+  kode: string;
+  name: string;
+}
+
+export interface Problem {
+  id: string;
+  kode: string;
+  name: string;
 }

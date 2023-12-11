@@ -97,14 +97,29 @@ const OrderCheckPage: React.FC = () => {
           id="orderStatus"
           className={`mt-2 w-full px-4 h-10 border ${
             data.isPaid ? "bg-green-400" : "bg-orange-400"
-          } flex justify-center items-center text-xl font-semibold text-white rounded-md shadow-xl`}
+          } flex justify-center items-center text-xl font-semibold text-white rounded-md shadow-xl mb-5`}
         >
           {formData.orderId // Menampilkan isPaid hanya jika orderId sudah dimasukkan
             ? data.isPaid
-              ? "Sudah dibaya"
+              ? "Sudah dibayar"
               : "Belum dibayar"
             : // Jika orderId belum dimasukkan, tampilkan pesan kosong
               "Pembayarnmu"}
+        </div>
+        <p>Nomor Resi Anda</p>
+        <div
+          id="orderStatus"
+          className={`mt-2 w-full px-4 h-10 border ${
+            data.isPaid ? "bg-green-400" : "bg-orange-400"
+          } flex justify-center items-center text-xl font-semibold text-white rounded-md shadow-xl`}
+        >
+          {formData.orderId // Menampilkan isPaid hanya jika orderId sudah dimasukkan
+            ? data.orders && data.orders.statusOrder !== undefined // Memeriksa keberadaan dan nilai dari data.orders.statusOrder
+              ? data.orders.statusOrder == 0
+                ? "Barangmu belum diserahkan ke Kurir"
+                : `${data.orders.statusOrder}`
+              : "Nomor Resi Kamu"
+            : "Nomor Resi Kamu"}
         </div>
       </div>
 

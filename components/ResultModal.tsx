@@ -27,8 +27,6 @@ const ResultModal: React.FC<ResultModalProps> = ({
         // Extracting the first matchingProductID from the result
         const firstMatchingProductID = result[0].matchingProductIDs[0];
 
-        console.log("First matching Product Id:", firstMatchingProductID);
-
         try {
           const response = await axios.get(
             `${process.env.NEXT_PUBLIC_API_URL}/products`,

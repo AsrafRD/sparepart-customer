@@ -101,9 +101,13 @@ const ResultModal: React.FC<ResultModalProps> = ({
             </div>
             <div className="grid grid-cols-5 mt-5">
               <div className="col-span-4 md:col-span-1">
-                {matchingProducts.map((product: any) => (
-                  <ProductCard key={product.id} data={product} />
-                ))}
+                {matchingProducts.length === 0 ? (
+                  <p className="text-red-500">Tidak ada rekomendasi produk dari kami untuk Anda</p>
+                ) : (
+                  matchingProducts.map((product: any) => (
+                    <ProductCard key={product.id} data={product} />
+                  ))
+                )}
               </div>
             </div>
           </div>

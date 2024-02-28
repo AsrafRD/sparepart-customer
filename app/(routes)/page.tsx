@@ -12,7 +12,7 @@ const HomePage = async () => {
   const billboards = await getBillboards();
 
   // Select only the first billboard
-  const firstBillboard = billboards.length > 0 ? [billboards[3]] : [];
+  const firstBillboard = billboards.length > 0 ? [billboards[0]] : [];
 
   return (
     <Container>

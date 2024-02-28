@@ -116,7 +116,7 @@ export default function Navbar() {
                             </Link>
                           </li>
                           <li>
-                            <Link href="#">
+                            <Link href="https://api.whatsapp.com/send?phone=6285727279577">
                               <WhatsappLogo size={25} />
                             </Link>
                           </li>
@@ -170,7 +170,7 @@ export default function Navbar() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#">
+                  <Link href="https://api.whatsapp.com/send?phone=6285727279577">
                     <WhatsappLogo size={20} className="hover:text-black"/>
                   </Link>
                 </li>

@@ -29,27 +29,33 @@ const Info: React.FC<InfoProps> = ({ data }) => {
       <hr className="my-4" />
       <div className="flex flex-col gap-y-6">
         <div className="flex items-center gap-x-4">
-          <h3 className="font-semibold text-black">Vehicle Brand :</h3>
+          <h3 className="font-semibold text-black">Merek Kendaraan :</h3>
           <div>
             {data?.vehicleBrand?.name}
           </div>
         </div>
         <div className="flex items-center gap-x-4">
-          <h3 className="font-semibold text-black">Vehicle Type :</h3>
+          <h3 className="font-semibold text-black">Tipe Kendaraan :</h3>
           <div>
             {data?.vehicleType?.name}
           </div>
         </div>
         <div className="flex items-center gap-x-4">
-          <h3 className="font-semibold text-black">Product Brand :</h3>
+          <h3 className="font-semibold text-black">Merek Produk :</h3>
           <div>
             {data?.productBrand?.name}
+          </div>
+        </div>
+        <div className="flex items-center gap-x-4">
+          <h3 className="font-semibold text-black">Deskripsi :</h3>
+          <div>
+            {data?.description}
           </div>
         </div>
       </div>
       <div className="mt-10 flex items-center gap-x-3">
         <Button onClick={onAddToCart} className="flex items-center gap-x-2">
-          Add To Cart
+          Tambah Keranjang
           <ShoppingCart size={20} />
         </Button>
       </div>

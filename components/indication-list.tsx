@@ -50,12 +50,13 @@ const IndicationList: React.FC<ProductListProps> = ({ title, items }) => {
       // const hasil = response.data?.mostSimilarRule?.hasil;
       const hasilArray = response.data?.hasil;
       const matchingProductIdsArray = response.data?.matchingProductIDs;
-      
+
       if (hasilArray.length > 0) {
         const hasilStrings = hasilArray.map((item: any) => ({
           rule: item.rule,
           similarity: item.similarity,
           intersection: item.intersection,
+          union: item.union,
           matchingProductIDs: matchingProductIdsArray,
           // Add other properties from the 'item' if needed
         }));
@@ -63,12 +64,11 @@ const IndicationList: React.FC<ProductListProps> = ({ title, items }) => {
         // const hasil = hasilStrings.join("\n");
 
         // Set the result in the state
-        // console.log("hasil string",hasilStrings)
+        console.log("hasil string", hasilStrings);
         setResult(hasilStrings);
       } else {
-        setErrorMessage(hasilArray)
+        setErrorMessage(hasilArray);
       }
-
     } catch (error) {
       console.error("Error sending indications to the server:", error);
     } finally {
@@ -79,6 +79,8 @@ const IndicationList: React.FC<ProductListProps> = ({ title, items }) => {
     setResult(null);
     setErrorMessage(null);
   };
+
+  // console.log("result nya ni", result)
 
   return (
     <div className="space-y-4">
@@ -116,6 +118,7 @@ const IndicationList: React.FC<ProductListProps> = ({ title, items }) => {
           result={result}
           errorMessage={errorMessage}
           onClose={handleCloseModal}
+          selectedIndications={selectedIndications} // Teruskan selectedIndications sebagai prop
         />
       )}
 
@@ -124,6 +127,7 @@ const IndicationList: React.FC<ProductListProps> = ({ title, items }) => {
           result={result}
           errorMessage={errorMessage}
           onClose={handleCloseModal}
+          selectedIndications={selectedIndications} // Teruskan selectedIndications sebagai prop
         />
       )}
     </div>

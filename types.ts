@@ -8,6 +8,7 @@ export interface Product {
   isFeatured: boolean;
   size: Size;
   color: Color;
+  description: string;
   vehicleBrand: VehicleBrand;
   vehicleType: VehicleType;
   productBrand: ProductBrand;

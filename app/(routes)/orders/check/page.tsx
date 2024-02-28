@@ -80,7 +80,7 @@ const OrderCheckPage: React.FC = () => {
             type="text"
             id="orderId"
             name="orderId"
-            placeholder="ORDER111111"
+            placeholder="Contoh : df5f3747-25da-4d58-ac3f-a5ce54a71567"
             value={formData.orderId}
             onChange={handleChange}
             className="px-4 py-2 border-2 mt-2 mb-4 w-full"
@@ -111,20 +111,35 @@ const OrderCheckPage: React.FC = () => {
           id="orderStatus"
           className={`mt-2 w-full px-4 h-10 border ${
             data.isPaid ? "bg-green-400" : "bg-orange-400"
-          } flex justify-center items-center text-xl font-semibold text-white rounded-md shadow-xl`}
+          } flex justify-center items-center text-xl font-semibold text-white rounded-md shadow-xl mb-5`}
+        >
+          {formData.orderId // Menampilkan isPaid hanya jika orderId sudah dimasukkan
+            ? data.orders && data.orders.shippingCode !== undefined // Memeriksa keberadaan dan nilai dari data.orders.statusOrder
+              ? data.orders.shippingCode == 0
+                ? "Nomor resi belum tersedia"
+                : `${data.orders.shippingCode}`
+              : "Ini nomor Resi Kamu"
+            : "Ini nomor Resi Kamu"}
+        </div>
+        <p>Status Pesanan Anda</p>
+        <div
+          id="orderStatus"
+          className={`mt-2 w-full px-4 h-10 border ${
+            data.isPaid ? "bg-green-400" : "bg-orange-400"
+          } flex justify-center items-center text-xl font-semibold text-white rounded-md shadow-xl mb-5`}
         >
           {formData.orderId // Menampilkan isPaid hanya jika orderId sudah dimasukkan
             ? data.orders && data.orders.statusOrder !== undefined // Memeriksa keberadaan dan nilai dari data.orders.statusOrder
               ? data.orders.statusOrder == 0
                 ? "Barangmu belum diserahkan ke Kurir"
                 : `${data.orders.statusOrder}`
-              : "Nomor Resi Kamu"
-            : "Nomor Resi Kamu"}
+              : "Ini status Pesananmu"
+            : "Ini status Pesananmu"}
         </div>
       </div>
 
       <div className="flex flex-col mt-8 text-gray-600">
-        <h1>Petunjuk untuk mendapat id pesanan</h1>
+        <h1>Petunjuk untuk mendapat id pesanan online yang dikirm menggunakan kurir :</h1>
 
         <div>
           <table>

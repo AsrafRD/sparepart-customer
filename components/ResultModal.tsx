@@ -25,7 +25,13 @@ const ResultModal: React.FC<ResultModalProps> = ({
   useEffect(() => {
     const fetchMatchingProducts = async () => {
       if (result && result.length > 0) {
+<<<<<<< HEAD
         const rule = result.rule;
+=======
+        // Extracting the first matchingProductID from the result
+        const firstMatchingProductID = result[0].matchingProductIDs[0];
+
+>>>>>>> 9cbd440bd29c8f6108e1f2d99c9985eb1ba51de1
         try {
           const response = await axios.get(
             `${process.env.NEXT_PUBLIC_API_URL}/products`,
@@ -89,6 +95,7 @@ const ResultModal: React.FC<ResultModalProps> = ({
             <p className="flex justify-center text-center text-4xl font-bold text-orange-500 mb-8">
               HASIL DIAGNOSA KERUSAKAN SEPEDA MOTOR
             </p>
+<<<<<<< HEAD
             <p className="flex justify-start text-xl text-black-900 mb-2">
               <span className="font-bold text-2xl">Keterangan : </span>
             </p>
@@ -170,6 +177,39 @@ const ResultModal: React.FC<ResultModalProps> = ({
             </table>
             <div className="mt-4">
               <p><span className="font-bold">Disclaimer </span> : <span className="italic">data yang di buat diatas kami tidak bisa menjamin kebenarannya 100% karna keterbatasan pengetahuan yang dimiliki</span></p>
+=======
+            {result.map((item: any, index: number) => (
+              <div key={index} className="mb-5">
+                <div className="md:flex md:flex-row md:items-center flex flex-col">
+                  <span className="font-bold text-xl">
+                    {`Kemungkinan ${index + 1}`}
+                  </span>
+                  <span className="font-bold text-orange-600">
+                    ( tingkat akurasi : {(item.similarity * 100).toFixed(0)}% )
+                  </span>
+                </div>
+                <br />
+                Keluhan <span className="font-bold">
+                  {item.intersection}
+                </span>{" "}
+                yang anda sampaikan tersebut, menurut kami kendararaan anda
+                mengalami <span className="font-bold">{item.rule.hasil}</span>.
+              </div>
+            ))}
+            <div className="font-bold text-orange-600 mt-8">
+              Berikut rekomendasi produk kami :
+            </div>
+            <div className="grid grid-cols-5 mt-5">
+              <div className="col-span-4 md:col-span-1">
+                {matchingProducts.length === 0 ? (
+                  <p className="text-red-500">Tidak ada rekomendasi produk dari kami untuk Anda</p>
+                ) : (
+                  matchingProducts.map((product: any) => (
+                    <ProductCard key={product.id} data={product} />
+                  ))
+                )}
+              </div>
+>>>>>>> 9cbd440bd29c8f6108e1f2d99c9985eb1ba51de1
             </div>
           </div>
         ) : null}

@@ -31,6 +31,8 @@ const IndicationList: React.FC<ProductListProps> = ({ title, items }) => {
     });
   };
 
+  console.log("selected indication nya ni", selectedIndications)
+
   const handleCheckNowClickOld = async (e: any) => {
     e.preventDefault();
     try {
@@ -81,6 +83,7 @@ const IndicationList: React.FC<ProductListProps> = ({ title, items }) => {
   };
 
   // console.log("result nya ni", result)
+  console.log("Error Message Nya ni", errorMessage)
 
   return (
     <div className="space-y-4">

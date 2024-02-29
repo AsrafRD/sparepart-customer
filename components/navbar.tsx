@@ -13,13 +13,10 @@ import {
   WhatsappLogo,
   X,
 } from "@phosphor-icons/react";
-
-const navigation = {
-  pages: [
-    { name: "Company", href: "#" },
-    { name: "Stores", href: "#" },
-  ],
-};
+import Image from "next/image";
+import logo from "@/public/assets/RS.png";
+import { Button } from "./ui/button";
+import clsx from "clsx";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -52,19 +49,22 @@ export default function Navbar() {
               leaveTo="-translate-x-full"
             >
               <Dialog.Panel className="relative flex w-60 flex-col bg-white mt-10 shadow-xl">
-                <div className="flex justify-between items-center pb-4 pt-5 mr-5">
+                <div className="flex justify-between items-center pb-1 pt-1 mr-5">
                   <Link href="/" className="ml-4 flex lg:ml-0 gap-x-2">
-                    <p className="font-bold text-xl">Rozic Sparepart</p>
+                    <Image src={logo} alt="Logo" width={62} height={62} />
                   </Link>
-                  <button
+                  <Button
                     type="button"
-                    className="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
+                    className={clsx(
+                      "relative inline-flex items-center justify-center rounded-full p-1 h-7 text-gray-700 bg-gray-100 border border-gray-300 shadow-md"
+                    )}
+                    variant="ghost"
                     onClick={() => setOpen(false)}
                   >
                     <span className="absolute -inset-0.5" />
                     <span className="sr-only">Close menu</span>
-                    <X size={32} aria-hidden="true" />
-                  </button>
+                    <X size={18} aria-hidden="true" />
+                  </Button>
                 </div>
 
                 <div className="space-y-3 border-t border-gray-200 px-4 py-4">
@@ -72,14 +72,20 @@ export default function Navbar() {
                     <p className="font-medium text-gray-900">Dashboard</p>
                   </Link>
 
-                  <div className="flex flex-col m-4 space-y-2">
-                    <Link href="/systemPakar" className="font-medium text-gray-900">
-                        Periksa kendaraan anda
+                  <div className="flex flex-col space-y-2 -m-2 px-2 flex lg:ml-0">
+                    <Link
+                      href="/systemPakar"
+                      className="font-medium text-gray-900"
+                    >
+                      Periksa kendaraan anda
                     </Link>
                   </div>
-                  <div className="flex flex-col m-4 space-y-2">
-                    <Link href="/orders/check" className="font-medium text-gray-900">
-                        Cek pesanan saya
+                  <div className="flex flex-col space-y-2 -m-2 px-2 flex lg:ml-0">
+                    <Link
+                      href="/orders/check"
+                      className="font-medium text-gray-900"
+                    >
+                      Cek pesanan saya
                     </Link>
                   </div>
                   <div className="-m-2 px-2 lg:ml-0">
@@ -166,22 +172,22 @@ export default function Navbar() {
               <ul className="flex jusstify-center items-center text-gray-600 space-x-4 mt-4 mb-6">
                 <li>
                   <Link href="#">
-                    <FacebookLogo size={20} className="hover:text-black"/>
+                    <FacebookLogo size={20} className="hover:text-black" />
                   </Link>
                 </li>
                 <li>
                   <Link href="https://api.whatsapp.com/send?phone=6285727279577">
-                    <WhatsappLogo size={20} className="hover:text-black"/>
+                    <WhatsappLogo size={20} className="hover:text-black" />
                   </Link>
                 </li>
                 <li>
                   <Link href="#">
-                    <InstagramLogo size={20} className="hover:text-black"/>
+                    <InstagramLogo size={20} className="hover:text-black" />
                   </Link>
                 </li>
                 <li>
                   <Link href="#">
-                    <TiktokLogo size={20} className="hover:text-black"/>
+                    <TiktokLogo size={20} className="hover:text-black" />
                   </Link>
                 </li>
               </ul>
@@ -189,7 +195,12 @@ export default function Navbar() {
             <p className="flex h-10 items-center justify-center px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
               Gratis ongkir minimal pembelian Rp.100.000
             </p>
-            <Link href="/help" className="hidden md:block text-gray-600 hover:text-black cursor-pointer">Bantuan</Link>
+            <Link
+              href="/help"
+              className="hidden md:block text-gray-600 hover:text-black cursor-pointer"
+            >
+              Bantuan
+            </Link>
           </div>
         </div>
 
@@ -198,7 +209,7 @@ export default function Navbar() {
           className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
         >
           <div className="border-b border-gray-200">
-            <div className="flex h-16 items-center">
+            <div className="flex h-16 items-center gap-x-7">
               <button
                 type="button"
                 className="relative rounded-md bg-white p-2 text-gray-400 lg:hidden"
@@ -210,6 +221,12 @@ export default function Navbar() {
               </button>
 
               {/* Flyout menus */}
+              <div className="hidden md:block space-x-6">
+                <Link href="/">
+                  <Image src={logo} alt="Logo" width={72} height={72} />
+                </Link>
+              </div>
+
               <div className="hidden md:block space-x-6">
                 <Link
                   href="/"

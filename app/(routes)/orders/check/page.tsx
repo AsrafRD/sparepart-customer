@@ -67,7 +67,7 @@ const OrderCheckPage: React.FC = () => {
 
     if (statusElement) {
       // Perbarui teks status pesanan sesuai dengan nilai isPaid
-      statusElement.innerText = isPaid ? "Selesai Diantar" : "Belum Diantar";
+      statusElement.innerText = isPaid ? "Sudah Bayar" : "Belum Bayar";
     }
   };
 

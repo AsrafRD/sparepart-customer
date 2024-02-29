@@ -78,7 +78,7 @@ const ResultModal: React.FC<ResultModalProps> = ({
         {errorMessage?.length === 0 ? (
           <div className="flex flex-col justify-center items-center">
             <p className="text-red-500">
-              ( Keluhan kendaraan yang anda berikan diluar pengetahuan kami )
+              {"( Keluhan kendaraan yang anda berikan diluar pengetahuan kami )"}
             </p>
             <p className="font-bold">
               silahkan inputkan keluhan lain jika masih ada
